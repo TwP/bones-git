@@ -6,17 +6,20 @@ rescue LoadError
 end
 
 ensure_in_path 'lib'
-require 'bones-git'
-
-task :default => 'test:run'
 
 Bones {
-  name  'bones-git'
-  authors  'Tim Pease'
-  email  'tim.pease@gmail.com'
-  url  'http://github.com/TwP/bones-git'
-  version  BonesGit::VERSION
+  name         'bones-git'
+  authors      'Tim Pease'
+  email        'tim.pease@gmail.com'
+  url          'http://github.com/TwP/bones-git'
+  version      '1.0.0'
   ignore_file  '.gitignore'
+
+  depend_on    'bones'
+  depend_on    'git'
+
+  use_gmail
+  enable_sudo
 }
 
 # EOF

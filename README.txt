@@ -1,32 +1,23 @@
 bones-git
-    by FIXME (your name)
-    FIXME (url)
+    by Tim Pease
+    http://gemcutter.org/gems/bones-git
 
 == DESCRIPTION:
 
-FIXME (describe your package)
-
-== FEATURES/PROBLEMS:
-
-* FIXME (list of features or problems)
-
-== SYNOPSIS:
-
-  FIXME (code sample of usage)
-
-== REQUIREMENTS:
-
-* FIXME (list of requirements)
+The git package for Mr Bones provides tasks to incorporate git actions into
+gem release. It also provides some extensions to the Mr Bones "create" command
+that allow you to initialize a git repository and to create a new GitHub
+project.
 
 == INSTALL:
 
-* FIXME (sudo gem install, anything else)
+  sudo gem install bones-git
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2008 FIXME (different license?)
+Copyright (c) 2009
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
