@@ -26,6 +26,13 @@ module Bones::Plugins::Git
         puts Git.open('.').tags.map {|t| t.name}.reverse
       end
 
+      desc 'Show log messages since the last release'
+      task :history => 'git:prereqs' do |t|
+        tag = Git.open('.').tags.map {|t| t.name}.last
+        range = tag ? "#{tag}..HEAD" : ''
+        system "git log --oneline #{range}"
+      end
+
       desc 'Create a new tag in the git repository'
       task :create_tag => 'git:prereqs' do |t|
         v = ENV['VERSION'] or abort 'Must supply VERSION=x.y.z'
