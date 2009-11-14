@@ -1,3 +1,8 @@
+== 1.1.1 / 2009-11-14
+
+* 1 bug fix
+  * Namespacing problem when referencing the Error class
+
 == 1.1.0 / 2009-11-13
 
 * 1 minor enhancement

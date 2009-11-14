@@ -65,8 +65,8 @@ module Bones::App::Git
     user = Git.global_config['github.user']
     token = Git.global_config['github.token']
 
-    raise Error, 'A GitHub username was not found in the global configuration.' unless user
-    raise Error, 'A GitHub token was not found in the global configuration.' unless token
+    raise ::Bones::App::Error, 'A GitHub username was not found in the global configuration.' unless user
+    raise ::Bones::App::Error, 'A GitHub token was not found in the global configuration.' unless token
 
     Net::HTTP.post_form(
         URI.parse('http://github.com/api/v2/yaml/repos/create'),
