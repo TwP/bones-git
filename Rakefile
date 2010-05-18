@@ -12,14 +12,12 @@ Bones {
   authors      'Tim Pease'
   email        'tim.pease@gmail.com'
   url          'http://github.com/TwP/bones-git'
-  version      '1.1.1'
   ignore_file  '.gitignore'
 
   depend_on    'bones'
-  depend_on    'git'
+  depend_on    'grit'
 
   use_gmail
   enable_sudo
 }
 
-# EOF
