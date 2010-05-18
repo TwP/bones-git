@@ -18,6 +18,5 @@ Bones {
   depend_on    'grit'
 
   use_gmail
-  enable_sudo
 }
 
