@@ -77,8 +77,14 @@ module Bones::Plugins::Git
         end
       end  # task
 
+      task :dev_version do |t|
+        dev = %x(git description --tags).strip.split('-')[2]
+        (config.version << '.' << dev) if dev
+      end  # task
+
     end  # namespace :git
 
+    task 'gem:package' => 'git:dev_version'
     task 'gem:release' => 'git:create_tag'
   end
 
