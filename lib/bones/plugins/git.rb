@@ -79,7 +79,7 @@ module Bones::Plugins::Git
 
       task :dev_version do |t|
         dev = %x(git describe --tags).strip.split('-')[-2]
-        aconfig.version << '.' << dev) if dev
+        (config.version << '.' << dev) if dev
       end  # task
 
     end  # namespace :git
