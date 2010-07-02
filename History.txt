@@ -1,3 +1,8 @@
+== 1.2.0 / 2010-07-02
+
+* 1 minor enhancement
+  * Adding a dev version number
+
 == 1.1.1 / 2009-11-14
 
 * 1 bug fix
