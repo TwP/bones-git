@@ -78,8 +78,9 @@ module Bones::Plugins::Git
       end  # task
 
       task :dev_version do |t|
-        dev = %x(git describe --tags).strip.split('-')[-2]
-        (config.version << '.' << dev) if dev
+        rgxp = Regexp.new(Regexp.escape(config.version) + '-(\d+)')
+        m = rgxp.match(%x(git describe --tags))
+        (config.version << ".#{m[1]}") if m
       end  # task
 
     end  # namespace :git
@@ -90,4 +91,3 @@ module Bones::Plugins::Git
 
 end  # module Bones::Plugins::Git
 
-# EOF
