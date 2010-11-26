@@ -12,7 +12,6 @@ Bones {
   authors      'Tim Pease'
   email        'tim.pease@gmail.com'
   url          'http://github.com/TwP/bones-git'
-  ignore_file  '.gitignore'
 
   depend_on    'bones'
   depend_on    'git'

@@ -78,14 +78,14 @@ module Bones::Plugins::Git
       end  # task
 
       task :dev_version do |t|
-        rgxp = Regexp.new(Regexp.escape(config.version) + '-(\d+)')
+        rgxp = Regexp.new(Regexp.escape(config.version) + '-(\w+)')
         m = rgxp.match(%x(git describe --tags))
         (config.version << ".#{m[1]}") if m
       end  # task
 
     end  # namespace :git
 
-    task 'gem:package' => 'git:dev_version'
+    task 'gem:prereqs' => 'git:dev_version'
     task 'gem:release' => 'git:create_tag'
   end
 
