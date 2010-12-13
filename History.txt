@@ -1,7 +1,12 @@
+== 1.2.2 / 2010-12-13
+
+* 1 bug fix
+  * dev version number tag matching was not working
+
 == 1.2.1 / 2010-11-26
 
 * 1 minor enhancement
-  # fixing dev version numbering
+  * fixing dev version numbering
 
 == 1.2.0 / 2010-07-02
 
