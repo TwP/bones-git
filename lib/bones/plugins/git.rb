@@ -8,7 +8,7 @@ module Bones::Plugins::Git
   def post_load
     have?(:git) {
       Dir.entries(Dir.pwd).include?('.git') and
-      system("git --version 2>&1 > #{DEV_NULL}")
+      quiet {system("git --version")}
     }
   end
 
