@@ -8,7 +8,7 @@ module Bones::Plugins::Git
   def post_load
     have?(:git) {
       Dir.entries(Dir.pwd).include?('.git') and
-      quiet {system("git --version")}
+      quiet { system("git --version") }
     }
   end
 
@@ -80,7 +80,8 @@ module Bones::Plugins::Git
       task :dev_version do |t|
         tag = "%s-%s" % [config.name, config.version]
         rgxp = Regexp.new(Regexp.escape(config.version) + '-(\w+)')
-        m = rgxp.match(quiet {%x(git describe --tags --match #{tag})})
+        str = quiet { %x(git describe --tags --match #{tag}) }
+        m = rgxp.match(str)
         if m
           config.version << ".#{m[1]}"
           config.gem._spec.version = config.version
