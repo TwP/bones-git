@@ -1,3 +1,8 @@
+== 1.2.3 / 2011-02-05
+
+Bug Fixes
+  - Quieting some git error messages [Lin Jen-Shin]
+
 == 1.2.2 / 2010-12-13
 
 * 1 bug fix
