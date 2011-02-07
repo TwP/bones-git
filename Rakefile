@@ -13,7 +13,7 @@ Bones {
   email        'tim.pease@gmail.com'
   url          'http://github.com/TwP/bones-git'
 
-  depend_on    'bones'
+  depend_on    'bones', '>= 3.6'
   depend_on    'git'
 
   use_gmail
