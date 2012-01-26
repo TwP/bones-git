@@ -10,7 +10,7 @@ module Bones::App::Git
       option
       option('Git Options:')
       option('--git', 'Initialize a git repository for the project.',
-             lambda { config[:git] = true }
+             lambda { |_| config[:git] = true }
       )
       option('--github DESCRIPTION', 'Create a new GitHub project.',
              'Requires a project description.',
