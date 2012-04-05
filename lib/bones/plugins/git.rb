@@ -5,11 +5,13 @@ module Bones::Plugins::Git
   include ::Bones::Helpers
   extend self
 
-  def post_load
+  def initialize_git
     have?(:git) {
       Dir.entries(Dir.pwd).include?('.git') and
       quiet { system("git --version") }
     }
+
+    Bones::Plugins::Gem.extend GemOverrides if have? :git
   end
 
   def define_tasks
@@ -23,12 +25,12 @@ module Bones::Plugins::Git
 
       desc 'Show tags from the git repository'
       task :tags => 'git:prereqs' do |t|
-        puts Git.open('.').tags.map {|t| t.name}.reverse
+        puts Git.open('.').tags.map {|tg| tg.name}.reverse
       end
 
       desc 'Show all log messages since the last release'
       task :changes => 'git:prereqs' do |t|
-        tag = Git.open('.').tags.map {|t| t.name}.last
+        tag = Git.open('.').tags.map {|tg| tg.name}.last
         range = tag ? "#{tag}..HEAD" : ''
         system "git log --oneline #{range}"
       end
@@ -62,7 +64,7 @@ module Bones::Plugins::Git
         git = Git.open '.'
         tag = "%s-%s" % [config.name, v]
 
-        unless git.tags.map {|t| t.name}.include? tag
+        unless git.tags.map {|tg| tg.name}.include? tag
           puts "Tag '#{tag}' does not exist."
           break
         end
@@ -95,5 +97,20 @@ module Bones::Plugins::Git
     task 'gem:release' => 'git:create_tag'
   end
 
-end  # module Bones::Plugins::Git
+  # Override the `manifest` method in the Gem plugin so that the list of
+  # filese to package is provided from git and its include / exclude rules.
+  #
+  module GemOverrides
+
+    # This method uses the `git ls-files` command to list the files that
+    # should be included in the packaging process for the project.
+    #
+    # Returns an array of filenames as Strings.
+    #
+    def manifest
+      %x{git ls-files}.split
+    end
+  end
+
+end  # Bones::Plugins::Git
 
