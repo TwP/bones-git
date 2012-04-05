@@ -88,6 +88,5 @@ module Bones::App::Git
     "http://github.com/#{user}/#{name}"
   end
 
-end  # module Bones::App::Git
+end  # Bones::App::Git
 
-# EOF
