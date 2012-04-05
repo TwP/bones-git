@@ -1,3 +1,8 @@
+== 1.3.0 / 2012-04-04
+
+Enhancements
+  - shell out to `git ls-files` to generate the project manifest
+
 == 1.2.5 / 2012-01-26
 
 Bug Fixes
