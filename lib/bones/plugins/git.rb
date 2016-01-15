@@ -85,7 +85,7 @@ module Bones::Plugins::Git
         str = quiet { %x(git describe --tags --match #{tag}) }
         m = rgxp.match(str)
         if m
-          config.version << ".#{m[1]}"
+          config.version = config.version+".#{m[1]}"
           config.gem._spec.version = config.version
         end
 
